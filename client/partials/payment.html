@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 justify-content-center">
+      Simple implementation of Paying Bitcoin to a Ethereum Wallet Address
+      That is stored on the server. The server uses the ShapeShift API to
+      convert the Bitcoin to Ethereum. To pay the configured wallet input the
+      amount of Ethereum you would like to send and optionally a return address
+      for your Bitcoin in case something goes wrong with the transaction and your funds
+      need to be returned. Click Start Payment which then should return a QR code of
+      the address to Deposit your Bitcoin for the transaction as well the amount of Bitcoin
+      you need to send in able to convert to the desired amount of Ethereum you want to send.
+      If there is an error, such as setting the amount of Ethereum you want to send to high or to low
+      an error will be displayed.
+    </div>
+  </div>
+  <div class="row" style="padding-top:25px">
+    <div class="col-sm-12">Return Address <input ng-model="returnAddress"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">Amount of Ethereum to Send <input type="number" ng-model="amount"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12"><button ng-click="initiatePayment()">Start Payment</button></div>
+  </div>
+  <div class="row justify-content-center" style="padding-top:50px;padding-bottom:50px;">
+    <div class="col-sm-4"><qrcode size=220 ng-if="depositAddress!=''" data="bitcoin:{{depositAddress}}?amount={{depositAmount}}" href="bitcoin:{{depositAddress}}?amount={{depositAmount}}"></qrcode></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12" ng-if="depositAddress!=''">Deposit Address: {{depositAddress}}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12" ng-if="depositAddress!=''">Amount to Deposit: {{depositAmount}}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12" ng-if="depositAddress!=''">Expires {{expiration}}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12" ng-if="error!=''">Error: {{error}}</div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+{
+  "name": "BitcoinToEthereumClient",
+  "homepage": "https://github.com/Venahlas/BitcoinToEthereumPayment",
+  "authors": [
+    "Vijay Iyer <vijay.iyer.8@gmail.com>"
+  ],
+  "description": "Client app that displays QR code of the Bitcoin address to make a payment to",
+  "main": "scripts/app.js",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.9",
+    "angular-route": "^1.6.9",
+    "angular-qrcode": "^7.2.0"
+  }
+}
