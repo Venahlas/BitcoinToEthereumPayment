@@ -15,9 +15,15 @@ router.post('/initiatepayment', function(req, res, next) {
   payment.initiatePayment(req.body.returnAddress, req.body.amount).then(
     function(parsedBody){
       console.log(parsedBody);
-      depositAddress=parsedBody.success.deposit;
-      paymentChecker=setInterval(checkOnPayment, 30000)
+      if(parsedBody.error){
+        console.log("there was an error setting up payment")
+      } else {
+        depositAddress=parsedBody.success.deposit;
+        paymentChecker=setInterval(checkOnPayment, 30000)
+      }
       res.json(parsedBody);
+  }).catch(function(err){
+    console.log("There was an error in the request "+err);
   });
 });
 
